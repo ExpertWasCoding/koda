@@ -11,16 +11,15 @@ void remove_space(const char *buffer, char *ubuffer) {
   }
   ubuffer[w] = '\0';
 }
-void stringToBinary(char *input) {
+void stringToBinary(char *input, char *output) {
   int len = strlen(input);
   for (int i = 0; i < len; i++) {
     char c = input[i];
     for (int j = 7; j >= 0; j--) {
-      printf("%d", (c >> j) & 1);
+      *output++ = ((c >> j) & 1) + 0;
     }
-    printf(" ");
   }
-  printf("\n");
+  *output = '\0';
 }
 
 int main() {
@@ -30,10 +29,11 @@ int main() {
   printf("Enter buffer: ");
   fgets(buffer, sizeof(buffer), stdin);
 
-  remove_space(buffer, ubuffer);
-  stringToBinary(ubuffer);
+  buffer[0] = '\0';
+  stringToBinary(buffer, ubuffer);
 
   printf("String after removing spaces: %s\n", ubuffer);
+  printf("String in binary = %s \n", buffer);
 
   return 0;
 }
