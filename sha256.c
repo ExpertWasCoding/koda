@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-
 void chartobinary(char c, char binaried[]) {
     for (int i = 7; i >= 0; i--) {
         binaried[7 - i] = ((c >> i) & 1) + '0';
@@ -23,9 +22,14 @@ void mult512(char binary[]){
         strcat(binary, "0");
     }
 }
+void last64(char binary[]){
+
+}
 int main(void) {
     char buffer[100];
     char binaried[10000];
+    char lenofbuffer[64];
+    char lenofbufferinbin[64];
     printf("Enter the string: ");
     fgets(buffer, sizeof(buffer), stdin);
     stringtobinary(buffer, binaried);
@@ -34,6 +38,10 @@ int main(void) {
 
     mult512(binaried);
     printf("\n your binary is \n %s", binaried);
+    sprintf(lenofbuffer, "%d", (int)strlen(buffer));
+    stringtobinary(lenofbuffer, lenofbufferinbin);
+    strcat(binaried, lenofbufferinbin);
+    printf("\n final binary %s \n", binaried);
 
     return 0;
 }
