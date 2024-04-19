@@ -16,7 +16,13 @@ void stringtobinary(char buffer[], char binaried[]) {
     }
     binaried[index] = '\0';
 }
-
+void mult512(char binary[]){
+    strcat(binary, "1");
+    int initial_increment = strlen(binary);
+    for(int i=0; strlen(binary) <= 512-64; i++ ){
+        strcat(binary, "0");
+    }
+}
 int main(void) {
     char buffer[100];
     char binaried[10000];
@@ -25,6 +31,9 @@ int main(void) {
     stringtobinary(buffer, binaried);
 
     printf("Binary representation: %s\n", binaried);
+
+    mult512(binaried);
+    printf("\n your binary is \n %s", binaried);
 
     return 0;
 }
