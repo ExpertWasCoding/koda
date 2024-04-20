@@ -5,7 +5,7 @@ void chartobinary(char c, char binaried[]) {
         binaried[7 - i] = ((c >> i) & 1) + '0';
     }
 }
-
+// What have I done
 void stringtobinary(char buffer[], char binaried[]) {
     int len = strlen(buffer);
     int index = 0;
